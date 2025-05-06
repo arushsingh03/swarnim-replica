@@ -40,9 +40,9 @@ const LocationSection = () => {
 
               <div>
                 <p className="text-gray-500 leading-8 font-montserrat mb-8 pr-18">
-                  Swarnim's position in{" "}
+                  Swarnim&apos;s position in{" "}
                   <span className="font-medium">Sector 5, Gurgaon</span>, one of
-                  the city's most promising sub-cities, makes it an irresistible
+                  the city&apos;s most promising sub-cities, makes it an irresistible
                   choice for those looking to invest in{" "}
                   <span className="font-medium">
                     commercial retail space in Gurgaon

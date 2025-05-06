@@ -18,25 +18,23 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
     <div className="w-full">
       {images.map((image) => (
         <div key={image.id} className="relative w-full h-screen">
-          <div className="absolute inset-0">
-            <Image
-              src={image.imageUrl}
-              alt={image.title}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
+          <Image
+            src={image.imageUrl}
+            alt={image.title}
+            fill
+            className="object-cover"
+            priority
+          />
 
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-white z-10 bg-black/40">
             <h2 className="text-6xl md:text-8xl font-serif mb-8">
-              <span className="font-normal">The Golden </span>
+              <span className="font-abt-bold text-5xl">The Golden </span>
               <span className="font-light">{image.title}</span>
             </h2>
 
             <Link
               href={image.link}
-              className="border border-white px-8 py-3 hover:bg-white hover:bg-opacity-20 transition-all"
+              className="bg-transparent text-white px-6 py-3 text-sm uppercase tracking-wider border border-white hover:bg-black hover:text-white hover:border-black transition-colors duration-1000 font-montserrat"
             >
               DISCOVER MORE
             </Link>

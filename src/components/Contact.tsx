@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -17,20 +18,15 @@ export default function ContactForm() {
   const [formError, setFormError] = useState("");
   const [formSuccess, setFormSuccess] = useState(false);
 
-  const handleInputChange = (e: { target: { name: any; value: any } }) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleCheckboxChange = (name: "acceptTerms" | "captchaVerified") => {
     setFormData((prev) => ({ ...prev, [name]: !prev[name] }));
-  };
-
-  const verifyCaptcha = () => {
-    setFormData((prev) => ({
-      ...prev,
-      captchaVerified: !prev.captchaVerified,
-    }));
   };
 
   const handleSubmit = async () => {
@@ -70,7 +66,7 @@ export default function ContactForm() {
         acceptTerms: false,
         captchaVerified: false,
       });
-    } catch (error) {
+    } catch {
       setFormError("An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -82,7 +78,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="bg-white min-h-screen z-100 ">
+    <div className="bg-white min-h-screen z-100">
       <div className="container mx-auto px-30 py-12">
         <h1 className="text-4xl md:text-5xl font-montserrat mb-8">
           <span className="text-gray-400 font-abt-bold">Enquire</span>
@@ -101,7 +97,6 @@ export default function ContactForm() {
                 value={formData.firstName}
                 onChange={handleInputChange}
                 className="w-full pb-2 border-b border-gray-900 focus:outline-none focus:border-gray-500"
-                placeholder=""
               />
             </div>
 
@@ -115,7 +110,6 @@ export default function ContactForm() {
                 value={formData.lastName}
                 onChange={handleInputChange}
                 className="w-full pb-2 border-b border-gray-900 focus:outline-none focus:border-gray-500"
-                placeholder=""
               />
             </div>
 
@@ -129,7 +123,6 @@ export default function ContactForm() {
                 value={formData.phoneNumber}
                 onChange={handleInputChange}
                 className="w-full pb-2 border-b border-gray-900 focus:outline-none focus:border-gray-500"
-                placeholder=""
               />
             </div>
 
@@ -143,7 +136,6 @@ export default function ContactForm() {
                 value={formData.emailId}
                 onChange={handleInputChange}
                 className="w-full pb-2 border-b border-gray-900 focus:outline-none focus:border-gray-500"
-                placeholder=""
               />
             </div>
           </div>
@@ -158,14 +150,18 @@ export default function ContactForm() {
               onChange={handleInputChange}
               rows={4}
               className="w-full pb-2 border-b border-gray-900 focus:outline-none focus:border-gray-500 resize-none"
-              placeholder=""
             />
           </div>
 
-          <div className="mb-6 flex justify-start">
-            <img
+          <div
+            className="mb-6 flex justify-start cursor-pointer"
+            onClick={() => handleCheckboxChange("captchaVerified")}
+          >
+            <Image
               src="https://miro.medium.com/v2/resize:fit:1400/1*4NhFKMxr-qXodjYpxtiE0w.gif"
               alt="reCAPTCHA"
+              width={200}
+              height={60}
               className="h-30 w-50"
             />
           </div>
@@ -208,8 +204,8 @@ export default function ContactForm() {
         <div className="mt-12 bg-gray-100 p-8 rounded-md font-montserrat">
           <div className="flex flex-col md:flex-row justify-between">
             <div>
-              <h3 className=" mb-2">Canga Global Homes Private Limited</h3>
-              <p className="text-sm text-gray-600 mb-2 ">
+              <h3 className="mb-2">Canga Global Homes Private Limited</h3>
+              <p className="text-sm text-gray-600 mb-2">
                 Ground Floor, Vatika Tower A, Sector 54, Golf Course Road,
                 Gurugram, Haryana 122003
               </p>

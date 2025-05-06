@@ -48,7 +48,7 @@ const FloorPlan = () => {
           </h1>
         </div>
         <div>
-          <button className="bg-black text-white px-6 py-3 text-sm uppercase tracking-wider">
+          <button className="bg-black text-white px-6 py-3 text-sm uppercase tracking-wider border border-black hover:bg-white hover:text-black transition-colors duration-1000">
             MASTER PLAN
           </button>
         </div>
@@ -76,11 +76,11 @@ const FloorPlan = () => {
 
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-80 z-50 flex justify-center items-center p-4"
+          className="fixed inset-0 bg-black/80 bg-opacity-80 z-50 flex justify-center items-center p-4"
           onClick={closeModal}
         >
           <div
-            className="bg-gray-800 w-full max-w-4xl"
+            className="bg-transparent w-full max-w-4xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative h-96 md:h-[28rem] w-full">
