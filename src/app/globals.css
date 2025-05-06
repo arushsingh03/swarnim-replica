@@ -24,3 +24,74 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.font-abt-bold {
+  font-family: var(--font-abt-bold), sans-serif;
+}
+.font-abt-italic {
+  font-family: var(--font-abt-italic), sans-serif;
+}
+.font-abt-roman {
+  font-family: var(--font-abt-roman), sans-serif;
+}
+.font-montserrat {
+  font-family: var(--font-montserrat), sans-serif;
+}
+.font-montserrat-italic {
+  font-family: var(--font-montserrat-italic), sans-serif;
+}
+
+@layer components {
+  .clip-polygon-banner {
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  }
+
+  .pennant-banner {
+    width: 140px;
+    position: relative;
+    background-color: white;
+    height: 160px;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.content-with-line {
+  display: flex;
+}
+
+.content-line {
+  width: 4rem;
+  height: 0.125rem;
+  background-color: #576272;
+  margin-top: 0.75rem;
+  margin-right: 2rem;
+  flex-shrink: 0;
+}
+.image-hover-zoom img {
+  transition: transform 0.5s ease;
+}
+
+.image-hover-zoom:hover img {
+  transform: scale(1.1);
+}
+
+
+.underline-animate {
+  position: relative;
+  display: inline-block;
+}
+.underline-animate::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s;
+}
+.underline-animate:hover::after,
+.underline-animate:focus::after {
+  width: 100%;
+}
